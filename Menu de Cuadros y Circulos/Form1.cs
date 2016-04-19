@@ -69,6 +69,22 @@ namespace Menu_de_Cuadros_y_Circulos
 
 
         }
+
+        private void ordenarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            figuras.Sort();
+            figuras.Reverse();
+           // this.Invalidate();
+        }
+
+        private void Form1_Paint(object sender, PaintEventArgs e)
+        {
+            foreach (Figura f in figuras)
+            {
+                f.Dibuja(this);
+
+            }
+        }
     }
 }
 

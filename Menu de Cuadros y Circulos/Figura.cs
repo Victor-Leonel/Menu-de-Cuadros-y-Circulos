@@ -8,24 +8,31 @@ using System.Windows.Forms;
 
 namespace Menu_de_Cuadros_y_Circulos
 {
-    abstract class Figura
+    abstract class Figura:IComparable
     {
         protected int X, Y;
         protected Pen pluma;
         protected int ancho, largo;
+        protected SolidBrush brocha;
 
         public Figura(int x, int y)
         {
             X = x;
             Y = y;
-
-            pluma = new Pen(Color.Red, 2);
-            ancho = 20;
-            largo = 20;
+            SolidBrush b = new SolidBrush(Color.Blue);
+            // pluma = new Pen(Color.Red, 2);
+            pluma = new Pen(Color.Aqua,2);
+            Random rnd = new Random();
+            ancho = rnd.Next(10,80);
+            largo = ancho;
         }
 
         public abstract void Dibuja(Form f);
 
+        public int CompareTo(object obj)
+        {
+            return this.largo.CompareTo(((Figura)obj).largo);
+        }
     }
 
     class Rectangulo : Figura
@@ -37,6 +44,8 @@ namespace Menu_de_Cuadros_y_Circulos
         {
             Graphics g = f.CreateGraphics();
             g.DrawRectangle(pluma, X, Y, ancho, largo);
+            g.FillRectangle(brocha, X, Y, ancho, largo);
+
         }
     }
 
@@ -50,6 +59,7 @@ namespace Menu_de_Cuadros_y_Circulos
         {
             Graphics g = f.CreateGraphics();
             g.DrawEllipse(pluma, X, Y, ancho, largo);
+            g.FillEllipse(brocha, X, Y, ancho, largo);
         }
     }
 }
