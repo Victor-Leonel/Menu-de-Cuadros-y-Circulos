@@ -44,7 +44,8 @@ namespace Menu_de_Cuadros_y_Circulos
         {
             Graphics g = f.CreateGraphics();
             g.DrawRectangle(pluma, X, Y, ancho, largo);
-            g.FillRectangle(brocha, X, Y, ancho, largo);
+            // g.FillRectangle(brocha, X, Y, ancho, largo);
+            
 
         }
     }
@@ -59,7 +60,7 @@ namespace Menu_de_Cuadros_y_Circulos
         {
             Graphics g = f.CreateGraphics();
             g.DrawEllipse(pluma, X, Y, ancho, largo);
-            g.FillEllipse(brocha, X, Y, ancho, largo);
+          // g.FillEllipse(brocha, X, Y, ancho, largo);
         }
     }
 }

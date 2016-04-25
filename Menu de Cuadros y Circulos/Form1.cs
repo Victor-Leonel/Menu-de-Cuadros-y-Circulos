@@ -15,10 +15,15 @@ namespace Menu_de_Cuadros_y_Circulos
     {
         List<Figura> figuras;
         enum TipoFigura { Rectangulo, Circulo };
+        private Color relleno_actual, Contorno_actual;
         private TipoFigura figura_actual;
+
         public Form1()
         {
-
+            /*
+            figura_actual = TipoFiura.circulo;
+            
+            */
             figuras = new List<Figura>();
             InitializeComponent();
             circuloToolStripMenuItem.Checked = true;
@@ -56,7 +61,8 @@ namespace Menu_de_Cuadros_y_Circulos
             }
             if (MouseButtons.Left == e.Button && circuloToolStripMenuItem.Checked == true)
             {
-                Circulo c = new Circulo(e.X, e.Y);
+               // Circulo c = new Circulo(new SolidBrush(relleno_actual),new Pen(Contorno_actual,2), e.X, e.Y);
+                Circulo c = new Circulo( e.X, e.Y);
                 c.Dibuja(this);
                 figuras.Add(c);
             }
@@ -84,6 +90,26 @@ namespace Menu_de_Cuadros_y_Circulos
                 f.Dibuja(this);
 
             }
+        }
+
+        private void negroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Contorno_actual = Color.Black;
+        }
+
+        private void rosaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            relleno_actual = Color.Pink;
+        }
+
+        private void rojoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            relleno_actual = Color.Red;
+        }
+
+        private void azulToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Contorno_actual = Color.Blue;
         }
     }
 }
